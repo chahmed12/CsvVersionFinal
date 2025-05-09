@@ -1,21 +1,17 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
         pretraiteur p=new PretraiteurSimple();
-        recuperateurCsv r =new recuperateurCsv("C:/Users/lassa/Downloads/noms.csv");
-        List<EntreeNom> lr=new ArrayList<>();
-        for (EntreeNom n :r.recuperer()){
-            lr.add(new EntreeNom(p.traiter(n.get_Nom())));
-        }
-
+        pretraiteur p1=new pretraiteurPhonetique();
+        List<pretraiteur> ps =List.of(p,p1);
+        recuperateurCsv r =new recuperateurCsv("C:/Users/lassa/Downloads/peps_names_658k.csv");
         generateurCandidat g =new generateurSimple();
-        comparateurExact c=new comparateurExact();
-        selectionneur s=new selectionneurSimple(1.0);
-        moteurdeRecherche m = new moteurdeRecherche(c,g,s,p,r);
-        for (EntreeNom n : m.rechercher("paul")) {
-            System.out.println("- les noms similaires : " + n.get_Nom());
+        comparateurNom c=new comparateurLevenshtein();
+        selectionneur s=new selectionneurSimple(0.5);
+        moteurdeRecherche m = new moteurdeRecherche(c,g,s,ps);
+        for (CoupleNomScore n : m.rechercher(r.recuperer(),"moussa")) { 
+            System.out.println("Name: " + n.getNom11() + ", Score: " + n.getScore());
         }
 
     }

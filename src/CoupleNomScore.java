@@ -7,4 +7,10 @@ public class CoupleNomScore {
         this.nom2=nom2;
         this.score=score;
     }
+    public double getScore(){
+        return score;
+    }
+    public String getNom11(){
+        return nom1;
+    }
 }

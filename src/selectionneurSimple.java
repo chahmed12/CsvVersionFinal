@@ -7,15 +7,13 @@ public class selectionneurSimple implements selectionneur {
         this.seuil=seuil;
 
     }
-     public List<EntreeNom> selectionner(List<NomScore> candidats){
-        List<EntreeNom> meilleur= new ArrayList<>();
-        for (NomScore c: candidats){
-            if (c.get_score()>=seuil){
-                meilleur.add(c.get_EntreeNom());
+    public List<CoupleNomScore> selectionner(List<CoupleNomScore> candidats) {
+        List<CoupleNomScore> meilleurs = new ArrayList<>();
+        for (CoupleNomScore c : candidats) {
+            if (c.getScore() >= seuil) {
+                meilleurs.add(c);
             }
         }
-       
-        return meilleur;
-     }
-    
+        return meilleurs;
+    }
 }
