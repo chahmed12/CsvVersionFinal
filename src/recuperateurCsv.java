@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 public class recuperateurCsv implements recuperateur {
-    private static String fichierCsv;
+    private  String fichierCsv;
     public recuperateurCsv(String fichierCsv) {
         this.fichierCsv = fichierCsv;
     }
@@ -10,7 +10,7 @@ public class recuperateurCsv implements recuperateur {
     public List<EntreeNom> recuperer() {
         List<EntreeNom> noms = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(recuperateurCsv.fichierCsv))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fichierCsv))) {
             String ligne;
             boolean premiereLigne = true;
 
@@ -34,4 +34,5 @@ public class recuperateurCsv implements recuperateur {
         }
         
     return noms;
-    }}
+    }
+}

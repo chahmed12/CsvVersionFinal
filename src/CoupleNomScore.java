@@ -13,4 +13,7 @@ public class CoupleNomScore {
     public String getNom11(){
         return nom1;
     }
+    public String getNom22(){
+        return nom2;
+    }
 }
